@@ -1,10 +1,13 @@
 import { Truck, Box, Globe, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const Transport = () => {
   return (
     <div className="min-h-screen bg-white">
+      <Header />
       <div className="relative h-[400px]">
         <img 
           src="/images/transport-banner.jpg" 
@@ -78,6 +81,8 @@ const Transport = () => {
           </Button>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };

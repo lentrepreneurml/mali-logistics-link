@@ -1,9 +1,10 @@
-
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import {
   Form,
   FormControl,
@@ -37,9 +38,10 @@ const Devis = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <Header />
       <div className="relative h-[400px]">
         <img 
-          src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80" 
+          src="/images/devis-banner.jpg" 
           alt="Demander un devis" 
           className="w-full h-full object-cover"
         />
@@ -155,6 +157,7 @@ const Devis = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
