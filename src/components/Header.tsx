@@ -1,4 +1,4 @@
-import { Phone } from "lucide-react";
+import { Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Header = () => {
@@ -18,9 +18,17 @@ const Header = () => {
             </div>
           </div>
           <div className="flex items-center space-x-4">
-            <div className="hidden md:flex items-center space-x-2">
-              <Phone className="h-4 w-4 text-[#E31C25]" />
-              <span className="text-sm text-gray-700">+223 98 92 40 43</span>
+            <div className="hidden md:flex items-center space-x-4">
+              <div className="flex items-center space-x-2">
+                <Phone className="h-4 w-4 text-[#E31C25]" />
+                <span className="text-sm text-gray-700">+223 98 92 40 43</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Mail className="h-4 w-4 text-[#E31C25]" />
+                <a href="mailto:commercial@ltd-logistique.com" className="text-sm text-gray-700 hover:text-[#E31C25]">
+                  commercial@ltd-logistique.com
+                </a>
+              </div>
             </div>
             <Button className="bg-[#E31C25] hover:bg-[#ba161d]" asChild>
               <a href="/devis">Demander un devis</a>

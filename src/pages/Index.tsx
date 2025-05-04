@@ -2,12 +2,73 @@ import { Phone, Clock, MapPin, Truck, Plane, FileText, Globe, Package2, ArrowRig
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useState } from "react";
+import emailjs from '@emailjs/browser';
+import { useToast } from "@/hooks/use-toast";
+
+// Replace these with your Email.js credentials - same as Devis page
+const SERVICE_ID = "default_service"; 
+const TEMPLATE_ID = "template_default"; 
+const PUBLIC_KEY = "your_public_key"; 
 
 const Index = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    nom: "",
+    email: "",
+    message: ""
+  });
+
   const scrollToServices = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const servicesSection = document.getElementById('services');
     servicesSection?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      // Email.js template params
+      const templateParams = {
+        from_name: formData.nom,
+        from_email: formData.email,
+        message: formData.message,
+        to_email: "commercial@ltd-logistique.com",
+      };
+      
+      // Send email using Email.js
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        templateParams,
+        PUBLIC_KEY
+      );
+      
+      toast({
+        title: "Message envoyé",
+        description: "Nous vous contacterons dans les plus brefs délais.",
+      });
+      
+      // Reset form
+      setFormData({ nom: "", email: "", message: "" });
+    } catch (error) {
+      console.error("Error sending email:", error);
+      toast({
+        title: "Erreur",
+        description: "Un problème est survenu lors de l'envoi du message. Veuillez réessayer plus tard.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -118,7 +179,7 @@ const Index = () => {
                 </div>
                 <div className="flex items-center space-x-4">
                   <Mail className="w-6 h-6 text-[#E31C25]" />
-                  <span>maroufkoita62@gmail.com</span>
+                  <span>commercial@ltd-logistique.com</span>
                 </div>
                 <div className="flex items-center space-x-4">
                   <Clock className="w-6 h-6 text-[#E31C25]" />
@@ -127,24 +188,40 @@ const Index = () => {
               </div>
             </div>
             <div>
-              <form className="space-y-4">
+              <form className="space-y-4" onSubmit={handleSubmit}>
                 <input 
                   type="text" 
+                  name="nom"
+                  value={formData.nom}
+                  onChange={handleInputChange}
                   placeholder="Nom complet"
                   className="w-full px-4 py-2 rounded bg-white/10 border border-white/20 text-white placeholder-gray-400"
+                  required
                 />
                 <input 
                   type="email" 
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
                   placeholder="Email"
                   className="w-full px-4 py-2 rounded bg-white/10 border border-white/20 text-white placeholder-gray-400"
+                  required
                 />
                 <textarea 
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
                   placeholder="Message"
                   rows={4}
                   className="w-full px-4 py-2 rounded bg-white/10 border border-white/20 text-white placeholder-gray-400"
+                  required
                 />
-                <Button className="w-full bg-[#E31C25] hover:bg-[#ba161d]">
-                  Envoyer le message
+                <Button 
+                  type="submit" 
+                  className="w-full bg-[#E31C25] hover:bg-[#ba161d]"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Envoi en cours..." : "Envoyer le message"}
                 </Button>
               </form>
             </div>

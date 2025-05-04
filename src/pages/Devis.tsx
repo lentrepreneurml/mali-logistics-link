@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import emailjs from '@emailjs/browser';
 import {
   Form,
   FormControl,
@@ -14,8 +15,15 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
+// Replace these with your Email.js credentials
+const SERVICE_ID = "default_service"; // You'll need to create a service on Email.js
+const TEMPLATE_ID = "template_default"; // You'll need to create a template on Email.js
+const PUBLIC_KEY = "your_public_key"; // Your Email.js public key
+
 const Devis = () => {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
   const form = useForm({
     defaultValues: {
       nom: "",
@@ -26,14 +34,44 @@ const Devis = () => {
     },
   });
 
-  const onSubmit = (data: any) => {
-    // Here you would typically send the data to your backend
-    console.log(data);
-    toast({
-      title: "Demande envoyée",
-      description: "Nous vous contacterons dans les plus brefs délais.",
-    });
-    form.reset();
+  const onSubmit = async (data: any) => {
+    setIsSubmitting(true);
+    
+    try {
+      // Email.js template params
+      const templateParams = {
+        from_name: data.nom,
+        from_email: data.email,
+        from_phone: data.telephone,
+        company: data.entreprise,
+        message: data.message,
+        to_email: "commercial@ltd-logistique.com",
+      };
+      
+      // Send email using Email.js
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        templateParams,
+        PUBLIC_KEY
+      );
+      
+      toast({
+        title: "Demande envoyée",
+        description: "Nous vous contacterons dans les plus brefs délais.",
+      });
+      
+      form.reset();
+    } catch (error) {
+      console.error("Error sending email:", error);
+      toast({
+        title: "Erreur",
+        description: "Un problème est survenu lors de l'envoi du message. Veuillez réessayer plus tard.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -62,7 +100,7 @@ const Devis = () => {
                   <FormItem>
                     <FormLabel>Nom complet</FormLabel>
                     <FormControl>
-                      <Input placeholder="Votre nom" {...field} />
+                      <Input placeholder="Votre nom" {...field} required />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -76,7 +114,7 @@ const Devis = () => {
                   <FormItem>
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input type="email" placeholder="votre@email.com" {...field} />
+                      <Input type="email" placeholder="votre@email.com" {...field} required />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -90,7 +128,7 @@ const Devis = () => {
                   <FormItem>
                     <FormLabel>Téléphone</FormLabel>
                     <FormControl>
-                      <Input placeholder="+223 XX XX XX XX" {...field} />
+                      <Input placeholder="+223 XX XX XX XX" {...field} required />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -122,6 +160,7 @@ const Devis = () => {
                         className="w-full min-h-[100px] rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                         placeholder="Décrivez votre besoin..."
                         {...field}
+                        required
                       />
                     </FormControl>
                     <FormMessage />
@@ -129,8 +168,12 @@ const Devis = () => {
                 )}
               />
 
-              <Button type="submit" className="w-full bg-[#E31C25] hover:bg-[#ba161d]">
-                Envoyer la demande
+              <Button 
+                type="submit" 
+                className="w-full bg-[#E31C25] hover:bg-[#ba161d]"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Envoi en cours..." : "Envoyer la demande"}
               </Button>
             </form>
           </Form>
@@ -151,7 +194,7 @@ const Devis = () => {
                 <svg className="w-5 h-5 text-[#E31C25]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <span>maroufkoita62@gmail.com</span>
+                <span>commercial@ltd-logistique.com</span>
               </p>
             </div>
           </div>
