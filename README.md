@@ -1,73 +1,62 @@
-# Welcome to your Lovable project
+# LTD Logistique - Site Web Professionnel
 
-## Project info
+## À propos
 
-**URL**: https://lovable.dev/projects/b5492a85-238b-4c55-bd58-d2413cc45066
+Site web professionnel pour LTD Logistique, une entreprise offrant des services de transport, dédouanement et solutions logistiques complètes au Mali.
 
-## How can I edit this code?
+## Technologies utilisées
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/b5492a85-238b-4c55-bd58-d2413cc45066) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
+Ce projet est construit avec :
 
 - Vite
 - TypeScript
 - React
+- React Router
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
+## Fonctionnalités
 
-Simply open [Lovable](https://lovable.dev/projects/b5492a85-238b-4c55-bd58-d2413cc45066) and click on Share -> Publish.
+- Design moderne et réactif
+- Navigation intuitive
+- Pages de services détaillées
+- Formulaire de demande de devis
+- Optimisé pour les moteurs de recherche
 
-## Can I connect a custom domain to my Lovable project?
+## Développement local
 
-Yes, you can!
+Pour travailler sur ce projet localement, vous aurez besoin de Node.js et npm installés.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```sh
+# Étape 1 : Cloner le dépôt
+git clone <URL_GIT>
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+# Étape 2 : Naviguer vers le répertoire du projet
+cd ltd-logistique
+
+# Étape 3 : Installer les dépendances nécessaires
+npm install
+
+# Étape 4 : Démarrer le serveur de développement
+npm run dev
+```
+
+## Déploiement
+
+Pour déployer ce site, suivez ces étapes :
+
+1. Exécutez le script de déploiement pour préparer tous les fichiers nécessaires :
+   ```
+   ./deploy.sh
+   ```
+
+2. Le dossier `dist` contiendra tous les fichiers prêts à être déployés sur un serveur web.
+
+3. Transférez les fichiers du dossier `dist` vers votre serveur d'hébergement.
+
+## Structure du projet
+
+- `src/components` - Composants réutilisables
+- `src/pages` - Pages principales du site
+- `src/lib` - Utilitaires et fonctions d'aide
+- `public/images` - Images et ressources statiques
