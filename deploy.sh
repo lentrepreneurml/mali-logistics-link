@@ -25,6 +25,13 @@ cp vercel.json dist/
 cp public/.htaccess dist/
 cp public/_redirects dist/
 
+# Ensure favicon is included
+echo "🔍 Checking favicon..."
+if [ ! -f "dist/favicon.png" ]; then
+  echo "⚠️ Favicon not found in build, copying it now..."
+  cp public/favicon.png dist/
+fi
+
 echo "🔍 Verifying images..."
 if [ ! -d "dist/images" ]; then
   mkdir -p dist/images
