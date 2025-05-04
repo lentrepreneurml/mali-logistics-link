@@ -1,4 +1,3 @@
-
 import { Package2, Warehouse, ClipboardList, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -8,7 +7,7 @@ const Logistique = () => {
     <div className="min-h-screen bg-white">
       <div className="relative h-[400px]">
         <img 
-          src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80" 
+          src="/images/logistique-banner.jpg" 
           alt="Logistique" 
           className="w-full h-full object-cover"
         />

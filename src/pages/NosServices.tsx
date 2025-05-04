@@ -1,4 +1,3 @@
-
 import { Truck, FileText, Plane, Package2, Globe, Settings } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -7,7 +6,7 @@ const NosServices = () => {
     <div className="min-h-screen bg-white">
       <div className="relative h-[400px]">
         <img 
-          src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80" 
+          src="/images/nos-services-banner.jpg" 
           alt="Nos Services" 
           className="w-full h-full object-cover"
         />

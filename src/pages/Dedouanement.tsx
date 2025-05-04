@@ -1,4 +1,3 @@
-
 import { FileText, ShieldCheck, Globe, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -8,7 +7,7 @@ const Dedouanement = () => {
     <div className="min-h-screen bg-white">
       <div className="relative h-[400px]">
         <img 
-          src="https://images.unsplash.com/photo-1587293852726-70d5bab4e9bc?q=80" 
+          src="/images/dedouanement-banner.jpg" 
           alt="Dédouanement" 
           className="w-full h-full object-cover"
         />

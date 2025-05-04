@@ -7,7 +7,7 @@ const Fret = () => {
     <div className="min-h-screen bg-white">
       <div className="relative h-[400px]">
         <img 
-          src="https://images.unsplash.com/photo-1586528116493-9f21f033ff37?q=80" 
+          src="/images/fret-banner.jpg" 
           alt="Fret" 
           className="w-full h-full object-cover"
         />
