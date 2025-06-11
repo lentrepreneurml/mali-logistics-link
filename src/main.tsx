@@ -6,7 +6,7 @@ import { init as initEmailJs } from '@emailjs/browser';
 
 // Initialize Email.js
 // Replace 'your_public_key' with your actual Email.js public key
-initEmailJs('your_public_key');
+initEmailJs('-34UE8UK_M2h-YEp5');
 
 // Preload all banner images to prevent loading issues
 preloadBannerImages();

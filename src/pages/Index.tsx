@@ -6,10 +6,10 @@ import { useState } from "react";
 import emailjs from '@emailjs/browser';
 import { useToast } from "@/hooks/use-toast";
 
-// Replace these with your Email.js credentials - same as Devis page
-const SERVICE_ID = "default_service"; 
-const TEMPLATE_ID = "template_default"; 
-const PUBLIC_KEY = "your_public_key"; 
+// Replace these with your Email.js credentials
+const SERVICE_ID = "service_ifyqjwb"; // You'll need to create a service on Email.js
+const TEMPLATE_ID = "template_70o4jaj"; // You'll need to create a template on Email.js
+const PUBLIC_KEY = "-34UE8UK_M2h-YEp5"; // Your Email.js public key
 
 const Index = () => {
   const { toast } = useToast();

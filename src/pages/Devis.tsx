@@ -16,9 +16,9 @@ import {
 } from "@/components/ui/form";
 
 // Replace these with your Email.js credentials
-const SERVICE_ID = "default_service"; // You'll need to create a service on Email.js
-const TEMPLATE_ID = "template_default"; // You'll need to create a template on Email.js
-const PUBLIC_KEY = "your_public_key"; // Your Email.js public key
+const SERVICE_ID = "service_ifyqjwb"; // You'll need to create a service on Email.js
+const TEMPLATE_ID = "template_70o4jaj"; // You'll need to create a template on Email.js
+const PUBLIC_KEY = "-34UE8UK_M2h-YEp5"; // Your Email.js public key
 
 const Devis = () => {
   const { toast } = useToast();
@@ -45,6 +45,7 @@ const Devis = () => {
         from_phone: data.telephone,
         company: data.entreprise,
         message: data.message,
+        reply_to: data.email,
         to_email: "commercial@ltd-logistique.com",
       };
       
